@@ -1,11 +1,12 @@
 \documentclass{beamer}
 
 \usepackage[italian]{babel}
+\usepackage{array}
 \usepackage{hyperref}
 \usepackage[style=mla]{biblatex}
 \addbibresource{./bibliography.bib}
 
-\usecolortheme{albatross}
+\usecolortheme{fly}
 \setbeamertemplate{navigation symbols}{}
 
 \title{
@@ -15,7 +16,7 @@
 \author{Stefano Volpe}
 \institute{Università di Bologna}
 \date{\today}
-\logo{\includegraphics[width=0.05\textwidth]{by-nc-sa-4-0}}
+\logo{\includegraphics[width=0.1\textwidth]{by-nc-sa-4-0}}
 
 \begin{document}
 
@@ -29,75 +30,121 @@
 
 \section{Introduzione}
 \begin{frame}{Introduzione}
-
+	Due classi di studenti in Ingegneria del software all'Università di Miami
+	svolgono lo stesso progetto in piccoli gruppi:
+	\begin{itemize}
+		\item i gruppi ``di controllo`` (C) fanno uso di metodi di sviluppo
+		      tradizionali;
+		\item i gruppi ``di trattamento`` (T) hanno studiato i \textbf{metodi
+			      formali per lo sviluppo di programmi}.
+	\end{itemize}
 \end{frame}
 
 \section{Approccio sperimentale}
 \begin{frame}{Approccio sperimentale}
+	\begin{table}
+		\begin{tabular}{|p{0.5\linewidth}|c|c|}
+			\hline
+			                                            & C  & T  \\
+			\hline
+			Introduzione alla derivavione dei programmi & No & Sì \\
+			\hline
+			Semantica delle strutture di dati           & Sì & Sì \\
+			\hline
+			Progettazione orientata agli oggetti        & Sì & Sì \\
+			\hline
+			Analisi formale di programmi concorrenti    & No & Sì \\
+			\hline
+			Ingegneria del software                     & Si & Sì \\
+			\hline
+			Laboratorio di sviluppo software            & Si & Sì \\
+			\hline
+		\end{tabular}
+		\caption{al di là della formazione specifica sui metodi formali, i due
+			gruppi condividono lo stesso curriculum.}
+	\end{table}
 
 \end{frame}
 
 \section{Il progetto}
 \begin{frame}{Il progetto}
-
+	Ogni gruppo deve realizzare un \textbf{sistema incorporato} per la gestione
+	delle richieste effettuate nei confronti di \textbf{un ascensore}. È richiesto
+	l'uso:
+	\begin{itemize}
+		\item dei principi della progettazione orientata agli oggetti;
+		\item di \texttt{C++} per l'implementazione;
+		\item di MFC per l'interfaccia grafica.
+	\end{itemize}
 \end{frame}
 
 \section{Progettazione}
 
-\subsection{Gruppo di controllo}
-\begin{frame}{Gruppo di controllo}
-
+\subsection{Gruppi di controllo}
+\begin{frame}{Progettazione: gruppi di controllo}
+	Nessun gruppo ha consegnato diagrammi UML.
+	\\~\\
+	Tredici gruppi hanno consegnato prototipi. Di questi, nove hanno esibito
+	codice sorgente.
+	\\~\\
+	Tutti i progetti sorgente consegnati mostrano un \textbf{grado di
+		accoppiamento estremamente alto}: il sistema dell'ascensore e la gestione
+	delle schermate convivono negli stessi moduli.
 \end{frame}
 
-\subsection{Gruppo di trattamento}
-\begin{frame}{Gruppo di trattamento}
-
-\end{frame}
-
-\subsection{Confronto}
-\begin{frame}{Confronto}
-
+\subsection{Gruppi di trattamento}
+\begin{frame}{Progettazione: gruppi di trattamento}
+	Tre gruppi su sei hanno consegnato diagrammi UML; di questi, uno solo presenta
+	un alto grado di accoppiamento.
+	\\~\\
+	Quattro gruppi su sei presentano specifiche formali complete. Ad esempio:
+	\begin{exampleblock}{Postcondizione per ogni operazione dell'ascensore}
+		\[
+			\begin{array}{l}
+				(\exists p : Person \mid OnFloor(e, p)                                               \\
+				\wedge \quad e.direction == p.direction : AddPerson(p))                              \\
+				\wedge \quad (GoingDown(e) \rightarrow e.current\_{}floow := e.current\_{}floor - 1) \\
+				\vee \quad GoingUp(e) \rightarrow e.current\_{}floor := e.current\_{}floor + 1)      \\
+				\wedge \quad (\exists p : Person \mid p.ending\_{}floor ==                           \\
+				e.current\_{}floor : RemovePerson(p)).
+			\end{array}
+		\]
+	\end{exampleblock}
 \end{frame}
 
 \section{Implementazione}
 
-\subsection{Gruppo di controllo}
-\begin{frame}{Gruppo di controllo}
+\subsection{Gruppi di controllo}
+\begin{frame}{Implementazione: gruppi di controllo}
 
 \end{frame}
 
-\subsection{Gruppo di trattamento}
-\begin{frame}{Gruppo di trattamento}
-
-\end{frame}
-
-\subsection{Confronto}
-\begin{frame}{Confronto}
+\subsection{Gruppi di trattamento}
+\begin{frame}{Implementazione: gruppi di trattamento}
 
 \end{frame}
 
 \section{Una soluzione interamente formale}
 
 \subsection{Specifiche}
-\begin{frame}{Specifiche}
+\begin{frame}{Soluzione formale: specifiche}
 
 \end{frame}
 
 \subsection{Progettazione}
-\begin{frame}{Progettazione}
+\begin{frame}{Soluzione formale: progettazione}
 
 \end{frame}
 
 \subsection{Implementazione}
-\begin{frame}{Implementazione}
+\begin{frame}{Soluzione formale: implementazione}
 
 \end{frame}
 
 \subsection{Confronto con soluzioni già pubblicate}
-\begin{frame}{Confronto con soluzioni già pubblicate}
+\begin{frame}{Soluzione formale: confronto}
 
 \end{frame}
-
 
 \section{Conclusioni}
 \begin{frame}{Conclusioni}
