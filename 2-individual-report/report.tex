@@ -36,7 +36,7 @@
 		\item i gruppi ``di controllo`` (C) fanno uso di metodi di sviluppo
 		      tradizionali;
 		\item i gruppi ``di trattamento`` (T) hanno studiato i \textbf{metodi
-			      formali per lo sviluppo di programmi}.
+			      formali per lo sviluppo di programmi} (vedi \cite{cohen}).
 	\end{itemize}
 \end{frame}
 
@@ -61,7 +61,7 @@
 			\hline
 		\end{tabular}
 		\caption{al di là della formazione specifica sui metodi formali, i due
-			gruppi condividono lo stesso curriculum.}
+			gruppi condividono lo stesso curriculum}
 	\end{table}
 
 \end{frame}
@@ -79,6 +79,13 @@
 \end{frame}
 
 \section{Progettazione}
+\begin{frame}
+	\vfill
+	\centering
+	\usebeamerfont{title}
+	Progettazione
+	\vfill
+\end{frame}
 
 \subsection{Gruppi di controllo}
 \begin{frame}{Progettazione: gruppi di controllo}
@@ -113,15 +120,46 @@
 \end{frame}
 
 \section{Implementazione}
+\begin{frame}
+	\vfill
+	\centering
+	\usebeamerfont{title}
+	Implementazione
+	\vfill
+\end{frame}
+
 
 \subsection{Gruppi di controllo}
-\begin{frame}{Implementazione: gruppi di controllo}
 
+\begin{frame}{Implementazione: gruppi di controllo}
+	\begin{table}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			                            & Media & Dev. Std. \\
+			\hline
+			Linee totali                & 117   & 44        \\
+			\hline
+			Linee per la richiesta      & 45    & 38        \\
+			\hline
+			Linee per la pianificazione & 72    & 38        \\
+			\hline
+			Cicli                       & 4     & 5         \\
+			\hline
+			Condizioni                  & 16    & 10        \\
+			\hline
+			Casi                        & 24    & 11        \\
+			\hline
+			Livelli di innesto          & 5     & 3         \\
+			\hline
+		\end{tabular}
+		\caption{analisi delle implementazioni dei gruppi di controllo. Nessuna
+			implementazione passa tutti i test; tutte esibiscono un cattivo stile di
+			programmazione.}
+	\end{table}
 \end{frame}
 
 \subsection{Gruppi di trattamento}
 \begin{frame}{Implementazione: gruppi di trattamento}
-
 \end{frame}
 
 \section{Una soluzione interamente formale}
