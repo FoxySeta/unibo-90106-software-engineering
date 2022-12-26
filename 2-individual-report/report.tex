@@ -4,14 +4,17 @@
 \usepackage{array}
 \usepackage{hyperref}
 \usepackage[style=mla]{biblatex}
-\addbibresource{./bibliography.bib}
+\usepackage{pgfplots}
+\usepackage{tikz}
 
 \usecolortheme{fly}
 \setbeamertemplate{navigation symbols}{}
+\addbibresource{./bibliography.bib}
 
 \title{
 	Applicazione di metodi formali \\
-	\small Sintesi di \cite{sobel}
+	\small Sintesi di  \emph{Formal Methods Application: An Empirical Tale of
+		Software Development} \autocite{sobel}
 }
 \author{Stefano Volpe}
 \institute{Università di Bologna}
@@ -30,13 +33,13 @@
 
 \section{Introduzione}
 \begin{frame}{Introduzione}
-	Due classi di studenti in Ingegneria del software all'Università di Miami
+	Due categorie di studenti di Ingegneria del software all'Università di Miami
 	svolgono lo stesso progetto in piccoli gruppi:
 	\begin{itemize}
 		\item i gruppi ``di controllo`` (C) fanno uso di metodi di sviluppo
 		      tradizionali;
 		\item i gruppi ``di trattamento`` (T) hanno studiato i \textbf{metodi
-			      formali per lo sviluppo di programmi} (vedi \cite{cohen}).
+			      formali per lo sviluppo di programmi} \autocite{cohen}.
 	\end{itemize}
 \end{frame}
 
@@ -55,13 +58,13 @@
 			\hline
 			Analisi formale di programmi concorrenti    & No & Sì \\
 			\hline
-			Ingegneria del software                     & Si & Sì \\
+			Ingegneria del software                     & Sì & Sì \\
 			\hline
-			Laboratorio di sviluppo software            & Si & Sì \\
+			Laboratorio di sviluppo software            & Sì & Sì \\
 			\hline
 		\end{tabular}
-		\caption{al di là della formazione specifica sui metodi formali, i due
-			gruppi condividono lo stesso curriculum}
+		\caption{al di là della formazione specifica sui metodi formali, le due
+			categorie condividono lo stesso curriculum}
 	\end{table}
 
 \end{frame}
@@ -72,7 +75,8 @@
 	delle richieste effettuate nei confronti di \textbf{un ascensore}. È richiesto
 	l'uso:
 	\begin{itemize}
-		\item dei principi della progettazione orientata agli oggetti;
+		\item dei principi della progettazione orientata agli oggetti
+		      \autocite{booch};
 		\item di \texttt{C++} per l'implementazione;
 		\item di MFC per l'interfaccia grafica.
 	\end{itemize}
@@ -137,6 +141,34 @@
 			\hline
 			                            & Media & Dev. Std. \\
 			\hline
+			Linee totali                & 136   & 88        \\
+			\hline
+			Linee per la richiesta      & 67    & 83        \\
+			\hline
+			Linee per la pianificazione & 69    & 39        \\
+			\hline
+			Cicli                       & 7     & 6         \\
+			\hline
+			Condizioni                  & 16    & 10        \\
+			\hline
+			Casi                        & 30    & 20        \\
+			\hline
+			Livelli di innesto          & 4     & 1         \\
+			\hline
+		\end{tabular}
+		\caption{analisi delle implementazioni dei gruppi di controllo. Nessuna
+			implementazione passa tutti i test; tutte esibiscono un cattivo stile di
+			programmazione.}
+	\end{table}
+\end{frame}
+
+\subsection{Gruppi di trattamento}
+\begin{frame}{Implementazione: gruppi di trattamento}
+	\begin{table}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			                            & Media & Dev. Std. \\
+			\hline
 			Linee totali                & 117   & 44        \\
 			\hline
 			Linee per la richiesta      & 45    & 38        \\
@@ -152,46 +184,95 @@
 			Livelli di innesto          & 5     & 3         \\
 			\hline
 		\end{tabular}
-		\caption{analisi delle implementazioni dei gruppi di controllo. Nessuna
-			implementazione passa tutti i test; tutte esibiscono un cattivo stile di
-			programmazione.}
+		\caption{analisi delle implementazioni dei gruppi di trattamento. Ogni
+			implementazione passa tutti i test; la qualità dello stile è variabile.}
 	\end{table}
-\end{frame}
-
-\subsection{Gruppi di trattamento}
-\begin{frame}{Implementazione: gruppi di trattamento}
 \end{frame}
 
 \section{Una soluzione interamente formale}
 
-\subsection{Specifiche}
-\begin{frame}{Soluzione formale: specifiche}
-
+\begin{frame}{Una soluzione interamente formale}
+	Dopo la consegna, uno dei gruppi di trattamento ha ripetuto il progetto
+	tramite un processo formale ancora più rigoroso:
+	\begin{enumerate}
+		\item un'analisi formale dei requisiti;
+		\item un'implementazione intermedia in \texttt{Guarded Command Language}
+		      \autocite{cohen};
+		\item una prova che l'implementazione intermedia rispettasse i requisiti
+		      formali;
+		\item una traduzione da \texttt{Guarded Command Language} a \texttt{C++}.
+	\end{enumerate}
 \end{frame}
 
 \subsection{Progettazione}
 \begin{frame}{Soluzione formale: progettazione}
-
+	Gli errori incontrati in fase di progettazione erano spesso dovuti a
+	specifiche incomplete, che sono state revisionate in corso d'opera.
+	\\~\\
+	Sono stati prodotti sia un diagramma UML che l'implementazione intermedia in
+	\texttt{Guarded Command Language}.
 \end{frame}
 
 \subsection{Implementazione}
 \begin{frame}{Soluzione formale: implementazione}
-
+	Data l'implementazione intermedia, la fase di implementazione vera e propria
+	è stata meccanica e banale.
+	\\~\\
+	Alla prima stesura del codice, gli unici errori riscontrati erano dovuti al
+	codice non derivato dalle specifiche formali.
+	\\~\\
+	Dalla prima stesura al momento in cui il progetto ha passato ogni caso di
+	prova, \textbf{il codice derivato dalle specifiche formali non ha mai subito
+		modifiche}.
 \end{frame}
 
-\subsection{Confronto con soluzioni già pubblicate}
-\begin{frame}{Soluzione formale: confronto}
+\section{Osservazioni}
 
+\begin{frame}{Osservazioni}
+	\begin{figure}
+		\begin{tikzpicture}
+			\begin{axis}[
+					x=3cm,
+					major x tick style = transparent,
+					ybar=2*\pgflinewidth,
+					bar width=14pt,
+					ymajorgrids = true,
+					ylabel = {Numero di linee},
+					symbolic x coords={Totale,Gest. richieste,Pianificazione},
+					xtick = data,
+					scaled y ticks = false,
+					enlarge x limits=0.25,
+					ymin=0,
+					legend cell align=left,
+				]
+				\addplot coordinates {(Totale, 136) (Gest. richieste,67) (Pianificazione,69)};
+				\addplot coordinates {(Totale,117) (Gest. richieste,45) (Pianificazione,72)};
+				\addplot coordinates {(Totale,105) (Gest. richieste,11) (Pianificazione,94)};
+
+				\legend{C,T,X}
+			\end{axis}
+		\end{tikzpicture}
+		\caption{confronto fra linee scritte dai gruppi di controllo (C), i gruppi
+			di trattamento (T) e l'ultimo gruppo (X).}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Osservazioni}
+	In questo esperimento comparativo, i gruppi che hanno fatto uso di metodi
+	formali ne hanno beneficiato enormemente in \textbf{correttezza} e
+	considerevolmente in \textbf{qualità dello stile} di programmazione.
+	\\~\\
+	Solo l'ultimo gruppo, che ha derivato e verificato il proprio codice, ne ha
+	anche guadagnato in concisione. Preso singolarmente, però, questo dato non è
+	statisticamente significativo.
 \end{frame}
 
 \section{Conclusioni}
 \begin{frame}{Conclusioni}
-
-\end{frame}
-
-\section{Sommario}
-\begin{frame}{Sommario}
-
+	Sobel e Clarkson, convalidando empiricamente l'ipotesi che l'analisi e la
+	verifica formali siano determinanti per la capacità di risoluzione dei
+	problemi, si augurano che queste pratiche siano incluse anche nei curricula di
+	altri atenei.
 \end{frame}
 
 \begin{frame}{Bibliografia}
